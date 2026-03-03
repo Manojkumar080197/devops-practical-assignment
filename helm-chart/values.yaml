@@ -7,3 +7,23 @@ image:
 service:
   type: LoadBalancer
   port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: myapp.local
+
+config:
+  APP_MESSAGE: "Hello from Helm ConfigMap"
+
+resources: {}
+
+livenessProbe:
+  path: /
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+readinessProbe:
+  path: /
+  initialDelaySeconds: 5
+  periodSeconds: 5
